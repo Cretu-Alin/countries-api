@@ -1,7 +1,5 @@
 # Getting Started with Create React App
 
-View live demo here: https://countries-api-frontend-ac.netlify.app/
-
 ## Available Scripts
 
 In the project directory, you can run:
