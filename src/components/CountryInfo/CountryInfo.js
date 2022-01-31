@@ -18,7 +18,6 @@ import { formatNumber } from "../../utils/numberUtils";
 const CountryInfo = ({ countries }) => {
   const history = useHistory();
   const { state } = useLocation();
-  console.log(state);
   const goHomeBtn = () => history.push("/");
 
   return (
@@ -63,12 +62,13 @@ const CountryInfo = ({ countries }) => {
               <p>
                 <BoldTitle>Currencies: </BoldTitle>
 
-                {state.currencies.map((currency, index) => {
-                  return state.currencies.length > 1 &&
-                    index < state.currencies.length - 1
-                    ? `${currency.name}, `
-                    : currency.name;
-                })}
+                {state.currencies &&
+                  state.currencies.map((currency, index) => {
+                    return state.currencies.length > 1 &&
+                      index < state.currencies.length - 1
+                      ? `${currency.name}, `
+                      : currency.name;
+                  })}
               </p>
               <p>
                 <BoldTitle>Languages: </BoldTitle>
@@ -83,13 +83,17 @@ const CountryInfo = ({ countries }) => {
           </CountryContainerDetails>
           <div className="span">
             Border Countries:
-            {state.borders.map((border) => {
-              return (
-                <span key={border} className="border-country">
-                  {border}
-                </span>
-              );
-            })}
+            {state.borders && state.borders.length > 0 ? (
+              state.borders.map((border) => {
+                return (
+                  <span key={border} className="border-country">
+                    {border}
+                  </span>
+                );
+              })
+            ) : (
+              <p className="border">No border countries</p>
+            )}
           </div>
         </CountryDetails>
       </MainSectionInfo>

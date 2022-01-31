@@ -21,7 +21,7 @@ const App = () => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    const url = "https://restcountries.eu/rest/v2/all";
+    const url = "https://restcountries.com/v2/all";
 
     axios
       .get(url)
